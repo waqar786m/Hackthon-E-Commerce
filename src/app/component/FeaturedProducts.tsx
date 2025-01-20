@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link"; // Import Link component
 
 const FeaturedProducts = () => {
   const products = [
@@ -68,6 +69,16 @@ const FeaturedProducts = () => {
             <p className="text-base xs:text-lg sm:text-xl font-bold text-center text-[#151875] mt-2">
               {product.price}
             </p>
+
+            {/* Link to Product Details Page */}
+            <div className="text-center mt-4">
+              <Link
+                href={`/product/${product.id}`} // Dynamic route to product details
+                className="text-sm font-medium text-[#FB2E86] hover:underline"
+              >
+                View Details
+              </Link>
+            </div>
           </div>
         ))}
       </div>

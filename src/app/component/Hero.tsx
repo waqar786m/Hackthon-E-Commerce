@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="bg-gray-100 py-10 px-4 sm:px-10 md:px-16 lg:px-28 relative">
-      <div className="container mx-auto flex  sm:flex-row items-center justify-between">
+      <div className="container mx-auto flex sm:flex-row items-center justify-between">
         {/* Left Content */}
         <div className="max-w-lg z-10 text-center sm:text-left">
           <p className="text-lg text-[#FB2E86]">
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
 
         {/* Right Content */}
-        <div className="relative bg-gradient-to-r from-purple-300 to-pink-300 p-4 rounded-full flex items-center justify-center max-w-xs mx-auto sm:max-w-sm md:max-w-md">
+        <div className=" relative bg-gradient-to-r from-purple-300 to-pink-300 rounded-full flex items-center justify-center max-w-xs mx-auto sm:max-w-sm md:max-w-md">
           {/* Chair Image */}
           <Image
             src="/hero/image.png" // Replace with your chair image path
@@ -36,8 +36,8 @@ export default function Hero() {
           />
 
           {/* Discount Badge */}
-          <div className="absolute top-4 right-4 bg-blue-500 text-white text-sm font-semibold rounded-full px-4 py-1">
-            50% off
+          <div className="absolute top-4 right-4 bg-[#FB2E86] text-white text-sm font-semibold rounded-full px-4 py-1">
+            50% OFF
           </div>
         </div>
       </div>
