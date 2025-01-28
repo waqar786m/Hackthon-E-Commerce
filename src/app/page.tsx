@@ -10,7 +10,7 @@ import ProductCard from "./component/ProductCard";
 import LatestBlog from "./component/LatestBlog";
 import TopCategories from "./component/TopCategories";
 import TrendingProducts from "./component/TrendingProducts";
-import ProductCards from "./Products/page";
+import ProductCards from "./Shop/page";
 import ShopOffer from "./component/ShopOffer";
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
       <DiscountProducts />
       <TopCategories />
       <LatestBlog />
-      <ProductCards />
+      {/* <ProductCards /> */}
       <Footer />
      
     </div>

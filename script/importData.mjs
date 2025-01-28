@@ -9,9 +9,9 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const client = createClient({
-  projectId: "2z3mii5z",
-  dataset: "production",
-  token: "skkzIKjkTu9b8hAGqpbJMvF9GrLc9oRXYd0V7HjIqu1cVG4bZUJwZWvY9f0e4HF3d0WSOC9pkJBlg7I3PZHftC8FpB28AchVPPxtKWuMd6fpu31A8lPy8s3iUC4XYEd1f0d09voDTEGzVlN1gREh4GlbsFbzu0xQ2FSRG1hqzNASj869qdhG",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  token: process.env.SANITY_API_TOKEN,
   apiVersion: '2025-01-15',
   useCdn: false,
 });

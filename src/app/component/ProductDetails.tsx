@@ -1,28 +1,15 @@
 import React from "react";
+import Image from "next/image";
 
 import { FaRegHeart } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Info from "./Info";
-import Description from "./Description";
+import { urlFor } from "@/sanity/lib/image";
+import Description from "../ProductDetail/Description";
 
-const ProductDetails = () => {
-  const product = {
-    name: "Playwood arm chair",
-    price: "$32.00",
-    oldPrice: "$39.00",
-    rating: 4.5,
-    reviews: 22,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
-    categories: [],
-    tags: [],
-    images: ["/productdetails/image2.png", "/productdetails/image3.png", "/productdetails/image4.png"],
-    mainImage: "/productdetails/image1.png",
-  };
+const ProductDetails = ({product} : {product : Product}) => {
 
   return (
     <>
@@ -45,26 +32,24 @@ const ProductDetails = () => {
           </div>
         </div>
 
-    <div className="w-[1150px] h-[509px] flex flex-wrap bg-[#FFFFFF] shadow-lg p-6 rounded-lg mt-20 ml-28">
+    <div className="w-[1150px] h-[509px] flex flex-wrap  p-6 rounded-lg mt-20 ml-28">
       {/* Left Side: Thumbnails and Main Image */}
       <div className="w-full md:w-1/3 flex">
         {/* Thumbnail Images */}
         <div className="flex flex-col space-y-2 mt-16">
-          {product.images.slice(0, 3).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Thumbnail ${index + 1}`}
+            <Image
+              key={product.name}
+              src={urlFor(product.image).url()}
+              alt={product.name}
               width={151}
               height={155}
               className=" object-cover "
             />
-          ))}
         </div>
         {/* Main Product Image */}
         <div className="ml-4 flex justify-center items-center">
-          <img
-            src={product.mainImage}
+          <Image
+            src={urlFor(product.image).url()}
             alt={product.name}
             width={375}
             height={487}
@@ -78,21 +63,13 @@ const ProductDetails = () => {
         {/* Product Name */}
         <h1 className="text-3xl font-bold text-[#0D134E]">{product.name}</h1>
 
-        {/* Product Rating and Reviews */}
-        <div className="flex items-center space-x-2">
-          <span className="text-yellow-500 text-lg">
-            {"★".repeat(Math.floor(product.rating))}
-          </span>
-          <span className="text-gray-400">({product.reviews})</span>
-        </div>
-
         {/* Product Price */}
         <div className="flex items-center space-x-4">
           <span className="text-xl font-bold text-[#151875]">
-            {product.price}
+            ${product.price}
           </span>
           <span className="text-[#FB2E86] line-through">
-            {product.oldPrice}
+            %{product.discountPercentage}
           </span>
         </div>
 
@@ -108,13 +85,15 @@ const ProductDetails = () => {
         </div>
 
         {/* Product Categories */}
-        <div>
-          <h3 className="text-sm font-bold text-[#151875]">Categories:</h3>
+        <div className="flex gap-4">
+          <h3 className="text-sm font-bold text-[#151875]">Category:</h3>
+          <p className="text-sm font-bold text-[#A9ACC6]">{product.category}</p>
         </div>
 
         {/* Product Tags */}
-        <div>
-          <h3 className="text-sm font-bold text-[#151875]">Tags</h3>
+        <div className="flex gap-4">
+          <h3 className="text-sm font-bold text-[#151875]">Stock Level:</h3>
+          <p className="text-sm font-bold text-[#A9ACC6]">{product.stockLevel}</p>
         </div>
 
         {/* Share Options */}
@@ -127,10 +106,10 @@ const ProductDetails = () => {
       </div>
     </div>
     
-    <Description />
-    <Info />
+     <Description />
+    {/* <Info /> */} 
 
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 };

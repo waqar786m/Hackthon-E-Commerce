@@ -1,5 +1,4 @@
 import Fashion from "./Fashion";
-import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function Products() {
@@ -82,7 +81,6 @@ export default function Products() {
           ))}
         </div>
       </div>
-      <Footer />
       </>
     );
   }

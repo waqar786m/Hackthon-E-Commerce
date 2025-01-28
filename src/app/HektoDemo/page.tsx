@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function HektoDemo() {
@@ -265,7 +264,6 @@ export default function HektoDemo() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

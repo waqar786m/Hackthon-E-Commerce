@@ -1,10 +1,44 @@
-// components/Navbar.jsx
+"use client";
 import Link from "next/link";
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from "react-icons/md";
 import { RiArrowDropDownLine, RiShoppingCart2Line } from "react-icons/ri";
 import { FaRegHeart, FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 
 export default function Navbar() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Fetch product data
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const query = `*[ _type == "product"]{
+        name,
+        "imageUrl": image.asset->url,
+        price,
+        description,
+        category,
+        "id": _id
+      }`;
+      const result = await client.fetch(query);
+      setProducts(result);
+    };
+    fetchProducts();
+  }, []);
+
+  // Handle search logic
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(term)
+    );
+    setSearchResults(filtered);
+  };
+
   return (
     <header className="text-black">
       {/* Top bar */}
@@ -22,20 +56,21 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <div className="text-white text-sm">English</div>
-            <RiArrowDropDownLine className="text-white text-2xl" />
-            <div className="text-white text-sm">USD</div>
-            <RiArrowDropDownLine className="text-white text-2xl" />
-            <div className="text-white text-sm">Login</div>
-            <RiArrowDropDownLine className="text-white text-2xl" />
-            <div className="text-white text-sm">Wishlist</div>
-            <FaRegHeart className="text-white text-xl" />
-            <RiShoppingCart2Line className="text-white text-xl" />
-          </div>
+          <Link href={""}>
+            <div className="flex items-center space-x-4">
+              <div className="text-white text-sm">English</div>
+              <RiArrowDropDownLine className="text-white text-2xl" />
+              <div className="text-white text-sm">USD</div>
+              <RiArrowDropDownLine className="text-white text-2xl" />
+              <div className="text-white text-sm">Login</div>
+              <RiArrowDropDownLine className="text-white text-2xl" />
+              <div className="text-white text-sm">Wishlist</div>
+              <FaRegHeart className="text-white text-xl" />
+              <RiShoppingCart2Line className="text-white text-xl" />
+            </div>
+          </Link>
         </div>
       </div>
-
       {/* Main Navbar */}
       <div className="bg-white">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-4 px-4 md:px-20">
@@ -51,27 +86,27 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link href="/HektoDemo" className="text-[#0D0E43]">
+                <Link href={"/HektoDemo"} className="text-[#0D0E43]">
                   Pages
                 </Link>
               </li>
               <li>
-                <Link href="/ProductDetails" className="text-[#0D0E43]">
+                <Link href={"/ProductDetails"} className="text-[#0D0E43]">
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="/Blogs" className="text-[#0D0E43]">
+                <Link href={"/Blogs"} className="text-[#0D0E43]">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/Products" className="text-[#0D0E43]">
+                <Link href={"/Shop"} className="text-[#0D0E43]">
                   Shop
                 </Link>
               </li>
               <li>
-                <Link href="/Contact" className="text-[#0D0E43]">
+                <Link href={"/Contact"} className="text-[#0D0E43]">
                   Contact
                 </Link>
               </li>
@@ -83,6 +118,8 @@ export default function Navbar() {
             <input
               type="text"
               placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearch}
               className="flex-1 px-4 py-2 outline-none text-gray-700"
             />
             <div className="w-[51px] h-full flex justify-center items-center bg-[#FB2E86] text-white">
@@ -91,6 +128,23 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Search Results */}
+      {searchTerm && (
+        <div className="container mx-auto mt-4">
+          <h3 className="text-lg font-bold">Search Results:</h3>
+          <ul className="space-y-2">
+            {searchResults.map((product) => (
+              <li key={product.id} className="border p-2 rounded-md">
+                <Link href={`/product/${product.id}`} className="text-blue-600">
+                  {product.name} - ${product.price}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {searchResults.length === 0 && <p>No products found.</p>}
+        </div>
+      )}
     </header>
   );
 }
