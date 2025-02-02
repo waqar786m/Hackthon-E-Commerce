@@ -2,46 +2,54 @@ import Image from "next/image";
 
 const ProductCard = () => {
   return (
-    <div className="bg-[#F1F0FF] py-10 px-5 flex justify-center items-center mt-20">
-      <div className="max-w-4xl flex flex-col md:flex-row items-center">
+    <div className="w-full bg-[#F1F0FF] py-10 px-4 sm:px-6 lg:px-8 flex justify-center items-center mt-20">
+      <div className="max-w-6xl w-full flex flex-col sm:flex-row items-center gap-8">
         {/* Product Image */}
-        <div className="relative w-full md:w-1/2 p-6 flex justify-center">
-          <div className="absolute left-4 md:left-10"></div>
+        <div className="w-full sm:w-1/2 lg:w-[55%] relative h-[300px] sm:h-[400px] lg:h-[500px]">
           <Image
-            src="/trending/image.png" // Replace with your image path
+            src="/trending/image.png"
             alt="BB&B Italian Sofa"
-            width={300} // Adjusted for smaller screens
-            height={320}
-            className="relative z-10 object-contain"
+            fill
+            className="object-contain object-center"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
 
         {/* Product Details */}
-        <div className="w-full md:w-1/2 p-4 md:p-8 text-center md:text-left">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-4">
+        <div className="w-full sm:w-1/2 lg:w-[45%] p-4 sm:p-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
             Unique Features Of Latest & Trending Products
           </h2>
-          <ul className="space-y-3 text-gray-600">
-            <li className="flex items-center justify-center md:justify-start">
-              <span className="h-3 w-3 bg-red-500 rounded-full mr-3"></span>
-              All frames constructed with hardwood solids and laminates
-            </li>
-            <li className="flex items-center justify-center md:justify-start">
-              <span className="h-3 w-3 bg-blue-500 rounded-full mr-3"></span>
-              Reinforced with double wood dowels, glue, screw-nails corner blocks and machine nails
-            </li>
-            <li className="flex items-center justify-center md:justify-start">
-              <span className="h-3 w-3 bg-green-500 rounded-full mr-3"></span>
-              Arms, backs, and seats are structurally reinforced
-            </li>
+          
+          <ul className="space-y-4 mb-8">
+            {[
+              {
+                color: "bg-red-500",
+                text: "All frames constructed with hardwood solids and laminates"
+              },
+              {
+                color: "bg-blue-500",
+                text: "Reinforced with double wood dowels, glue, screw-nails corner blocks and machine nails"
+              },
+              {
+                color: "bg-green-500",
+                text: "Arms, backs, and seats are structurally reinforced"
+              }
+            ].map((feature, index) => (
+              <li key={index} className="flex items-start">
+                <span className={`${feature.color} h-3 w-3 rounded-full mt-1.5 mr-3 flex-shrink-0`} />
+                <span className="text-gray-600 text-base sm:text-lg">{feature.text}</span>
+              </li>
+            ))}
           </ul>
-          <div className="mt-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <button className="bg-pink-500 text-white px-6 py-2 rounded-md">
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
+            <button className="w-full sm:w-auto bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-lg transition-colors duration-200">
               Add To Cart
             </button>
-            <div className="text-center md:text-right">
-              <p className="font-bold text-gray-800">BB&B Italian Sofa</p>
-              <p className="text-pink-500 text-lg">$210.00</p>
+            <div className="text-center sm:text-right">
+              <p className="text-lg font-semibold text-gray-900">BB&B Italian Sofa</p>
+              <p className="text-2xl font-bold text-pink-600">$210.00</p>
             </div>
           </div>
         </div>

@@ -1,15 +1,21 @@
 "use client";
+
 import Link from "next/link";
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from "react-icons/md";
 import { RiArrowDropDownLine, RiShoppingCart2Line } from "react-icons/ri";
 import { FaRegHeart, FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
+import { useCart } from "../Context/CartContext";
+import { FiUser } from "react-icons/fi";
 
 export default function Navbar() {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const { cart } = useCart(); // Access cart data
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // Total items in cart
 
   // Fetch product data
   useEffect(() => {
@@ -56,21 +62,33 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-          <Link href={""}>
-            <div className="flex items-center space-x-4">
-              <div className="text-white text-sm">English</div>
-              <RiArrowDropDownLine className="text-white text-2xl" />
-              <div className="text-white text-sm">USD</div>
-              <RiArrowDropDownLine className="text-white text-2xl" />
-              <div className="text-white text-sm">Login</div>
-              <RiArrowDropDownLine className="text-white text-2xl" />
-              <div className="text-white text-sm">Wishlist</div>
-              <FaRegHeart className="text-white text-xl" />
+          <div className="flex items-center space-x-4">
+            <div className="text-white text-sm">English</div>
+            <RiArrowDropDownLine className="text-white text-2xl" />
+            <div className="text-white text-sm">USD</div>
+            <RiArrowDropDownLine className="text-white text-2xl" />
+            <Link href="/Login">
+              <div className="flex items-center space-x-2">
+                <div className="text-white text-sm">Login</div>
+                <FiUser className="text-white text-xl" />
+              </div>
+            </Link>
+            <div className="text-white text-sm">Wishlist</div>
+            <FaRegHeart className="text-white text-xl" />
+
+            {/* Cart Icon with Count */}
+            <Link href="/Cart" className="relative">
               <RiShoppingCart2Line className="text-white text-xl" />
-            </div>
-          </Link>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
       </div>
+
       {/* Main Navbar */}
       <div className="bg-white">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-4 px-4 md:px-20">
@@ -78,7 +96,7 @@ export default function Navbar() {
           <div className="text-2xl font-bold mb-4 md:mb-0">Hekto</div>
 
           {/* Navigation Links */}
-          <nav className="mb-4 md:mb-0">
+          <nav className="mb-4 md:mb-0 w-full md:w-auto">
             <ul className="flex flex-wrap justify-center md:justify-start space-x-4 md:space-x-6">
               <li>
                 <Link href="/" className="text-[#FB2E86]">
@@ -91,7 +109,7 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link href={"/ProductDetails"} className="text-[#0D0E43]">
+                <Link href={"/GridDefault"} className="text-[#0D0E43]">
                   Products
                 </Link>
               </li>
@@ -114,7 +132,7 @@ export default function Navbar() {
           </nav>
 
           {/* Search Bar */}
-          <div className="w-full md:w-[317px] h-[40px] flex items-center border border-[#E7E6EF] rounded-sm overflow-hidden">
+          <div className="w-full md:w-[317px] h-[40px] flex items-center border border-[#E7E6EF] rounded-sm overflow-hidden mt-4 md:mt-0">
             <input
               type="text"
               placeholder="Search..."

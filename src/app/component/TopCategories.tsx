@@ -29,7 +29,7 @@ const TopCategories = () => {
   ];
 
   return (
-    <div className="py-12 px-6 mt-20 ">
+    <div className="py-12 px-6 mt-20">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
           Top Categories
@@ -38,7 +38,8 @@ const TopCategories = () => {
           {categories.map((category) => (
             <div
               key={category.id}
-              className="relative flex flex-col justify-center items-center bg-[#F6F7FB] p-4 w-48 h-48 rounded-full">
+              className="relative flex flex-col justify-center items-center bg-[#F6F7FB] p-4 w-48 h-48 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105"
+            >
               <div className="relative w-28 h-28">
                 <Image
                   src={category.image}
@@ -47,7 +48,6 @@ const TopCategories = () => {
                   style={{ objectFit: "contain" }}
                 />
               </div>
-             
               <p className="mt-4 font-medium text-[#151875]">{category.name}</p>
               <p className="text-[#151875]">{category.price}</p>
             </div>
@@ -58,16 +58,12 @@ const TopCategories = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full ${
-                category.name ? "bg-pink-500" : "bg-gray-300"
-              }`}
+              className={`w-3 h-3 rounded-full ${index === 0 ? "bg-pink-500" : "bg-gray-300"}`}
             ></div>
           ))}
         </div>
       </div>
     </div>
-
-    
   );
 };
 

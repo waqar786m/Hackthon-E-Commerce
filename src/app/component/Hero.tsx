@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="bg-gray-100 py-10 px-4 sm:px-10 md:px-16 lg:px-28 relative">
-      <div className="container mx-auto flex sm:flex-row items-center justify-between">
+      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between">
         {/* Left Content */}
         <div className="max-w-lg z-10 text-center sm:text-left">
           <p className="text-lg text-[#FB2E86]">
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
 
         {/* Right Content */}
-        <div className=" relative bg-gradient-to-r from-purple-300 to-pink-300 rounded-full flex items-center justify-center max-w-xs mx-auto sm:max-w-sm md:max-w-md">
+        <div className="relative bg-gradient-to-r   rounded-full flex items-center justify-center max-w-xs mx-auto sm:max-w-sm md:max-w-md mt-6 sm:mt-0">
           {/* Chair Image */}
           <Image
             src="/hero/image.png" // Replace with your chair image path

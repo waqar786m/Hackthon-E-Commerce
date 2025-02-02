@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { RiGridFill, RiListUnordered } from "react-icons/ri";
@@ -7,19 +7,19 @@ export default function Fashion() {
   const [viewType, setViewType] = useState("grid");
 
   return (
-    <div className="container mx-auto py-6 px-2 flex justify-around items-center">
+    <div className="container mx-auto py-6 px-2 flex flex-col md:flex-row justify-between items-center">
       {/* Left Section */}
-      <div>
-        <h1 className="text-2xl font-bold text-indigo-900">
-          Ecommerce Accesories & Fashion item
+      <div className="mb-4 md:mb-0">
+        <h1 className="text-2xl font-bold text-indigo-900 text-center md:text-left">
+          Ecommerce Accessories & Fashion Items
         </h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 text-center md:text-left">
           About 9,620 results (0.62 seconds)
         </p>
       </div>
 
       {/* Right Section */}
-      <div className="flex items-center space-x-6">
+      <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
         {/* Per Page */}
         <div className="flex items-center">
           <label htmlFor="perPage" className="text-sm text-indigo-900 mr-2">
@@ -69,7 +69,7 @@ export default function Fashion() {
                   : "border-gray-300 text-gray-500"
               } rounded`}
               onClick={() => setViewType("list")}
-            >    
+            >
               <RiListUnordered />
             </button>
           </div>

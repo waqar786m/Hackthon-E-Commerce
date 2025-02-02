@@ -3,11 +3,9 @@ import React from "react";
 import Image from "next/image";
 import { FaPenNib } from "react-icons/fa";
 import { MdOutlineEditCalendar } from "react-icons/md";
-
 import { BsInstagram } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
-
 import Navbar from "./Navbar";
 
 export default function Blog() {
@@ -115,10 +113,11 @@ export default function Blog() {
       price: "$12.00-$15.00",
     },
   ];
+
   return (
     <>
       <Navbar />
-      <div className="min-h-screen py-20 px-28">
+      <div className="min-h-screen py-20 px-8 lg:px-28">
         <div className="container mx-auto flex flex-wrap lg:flex-nowrap gap-8">
           {/* Blog Section */}
           <div className="w-full lg:w-2/3">
@@ -172,7 +171,7 @@ export default function Blog() {
               <input
                 type="text"
                 placeholder="Search"
-                className="w-[270px] h-[40px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FB2E86]"
+                className="w-full sm:w-[270px] h-[40px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#FB2E86]"
               />
             </div>
 
@@ -180,10 +179,10 @@ export default function Blog() {
               <h2 className="text-xl font-bold text-[#151875] mb-4">
                 Categories
               </h2>
-              <div className="grid grid-cols-2 space-y-2 gap-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 space-y-2 gap-y-4">
                 {/* Left Column */}
                 <div>
-                  <button className="w-[122] h-[30] bg-[#F939BF] text-center text-white px-4 py-1 rounded-sm font-medium text-sm">
+                  <button className="w-full sm:w-[122px] h-[30px] bg-[#F939BF] text-center text-white px-4 py-1 rounded-sm font-medium text-sm">
                     Hobbies (14)
                   </button>
                   <p className="text-[#151875] font-medium text-sm mt-4">
@@ -265,7 +264,7 @@ export default function Blog() {
               <h2 className="text-xl font-bold text-[#151875] mb-4">
                 Offer Product
               </h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-1 gap-4">
                 {OfferProduct.map((OfferProduct) => (
                   <div
                     key={OfferProduct.id}
@@ -312,28 +311,31 @@ export default function Blog() {
                   href="#"
                   className="text-[#151875] font-medium text-sm hover:text-pink-500"
                 >
-                  General
-                </a>
-                <a href="#" className="text-pink-500 font-medium text-sm">
-                  Atsanil
+                  Fashion
                 </a>
                 <a
                   href="#"
                   className="text-[#151875] font-medium text-sm hover:text-pink-500"
                 >
-                  Insas.
+                  Travel
                 </a>
                 <a
                   href="#"
                   className="text-[#151875] font-medium text-sm hover:text-pink-500"
                 >
-                  Bibsaas
+                  Fitness
                 </a>
                 <a
                   href="#"
                   className="text-[#151875] font-medium text-sm hover:text-pink-500"
                 >
-                  Nulla.
+                  Business
+                </a>
+                <a
+                  href="#"
+                  className="text-[#151875] font-medium text-sm hover:text-pink-500"
+                >
+                  Health
                 </a>
               </div>
             </div>

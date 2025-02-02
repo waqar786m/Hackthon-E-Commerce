@@ -1,4 +1,5 @@
 interface Product {
+    imageUrl: string | undefined;
     oldPrice;
     id: string; 
     name: string; 

@@ -12,6 +12,7 @@ import TopCategories from "./component/TopCategories";
 import TrendingProducts from "./component/TrendingProducts";
 import ProductCards from "./Shop/page";
 import ShopOffer from "./component/ShopOffer";
+import { Newsletter } from "./component/Newsletter";
 
 export default function Home() {
   return (
@@ -26,9 +27,10 @@ export default function Home() {
       <TrendingProducts />
       <DiscountProducts />
       <TopCategories />
+      <Newsletter />
       <LatestBlog />
       {/* <ProductCards /> */}
-      <Footer />
+      {/* <Footer /> */}
      
     </div>
   );

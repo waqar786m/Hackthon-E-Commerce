@@ -36,14 +36,15 @@ const LatestBlog = () => {
   return (
     <div className="py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-center text-[#151875] mb-8">
+        <h2 className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-center text-[#151875] mb-8 animate__animated animate__fadeIn">
           Latest Blog
         </h2>
         <div className="grid grid-cols-1 gap-6 xs:grid-cols-2 sm:grid-cols-3 px-4">
-          {blogs.map((blog) => (
+          {blogs.map((blog, index) => (
             <div
               key={blog.id}
-              className="w-full xs:w-[300px] sm:w-[350px] h-auto bg-white shadow-md rounded-lg overflow-hidden mx-auto">
+              className={`w-full xs:w-[300px] sm:w-[350px] h-auto bg-white shadow-md rounded-lg overflow-hidden mx-auto transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl animate__animated animate__fadeIn animate__delay-${index * 200}ms`}
+            >
               <div className="relative w-full h-[200px] sm:h-[255px]">
                 <Image
                   src={blog.image}

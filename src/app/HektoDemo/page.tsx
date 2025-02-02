@@ -45,13 +45,10 @@ export default function HektoDemo() {
     <>
       <Navbar />
 
-      {/* Hero Section */}
-      <div className="mx-auto h-[285px] bg-gray-100 py-10 px-28">
+     {/* Hero Section */}
+     <div className="mx-auto h-[285px] bg-gray-100 py-10 px-6 sm:px-28">
         <div className="container mx-auto flex flex-col justify-center items-start h-full">
-          {/* About Us Title */}
           <h2 className="text-3xl text-[#101750] font-bold mb-2">Hekto Demo</h2>
-
-          {/* Home.Page.About Us Row */}
           <div className="flex flex-row items-center">
             <p className="text-black">Home.Page</p>
             <p className="text-pink-500">.Hekto Demo</p>
@@ -59,10 +56,10 @@ export default function HektoDemo() {
         </div>
       </div>
 
-      <div className="min-h-screen bg-white p-8 px-28">
+      <div className="min-h-screen bg-white p-4 sm:p-8 md:px-28">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
           {/* Left Section */}
-          <div className="flex-1 bg-[#F8F8FD] rounded-md p-8">
+          <div className="flex-1 bg-[#F8F8FD] rounded-md p-4 sm:p-8">
             <h1 className="text-2xl font-bold text-[#1D3178]">Hekto Demo</h1>
             <p className="text-sm text-gray-500 mt-1">
               Cart / Information / Shipping / Payment
@@ -111,7 +108,7 @@ export default function HektoDemo() {
                 Shipping Address
               </h2>
               <form className="mt-4 space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="first-name"
@@ -165,7 +162,7 @@ export default function HektoDemo() {
                     className="w-full border-gray-300 rounded-md mt-1 p-2"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="city"
@@ -201,14 +198,14 @@ export default function HektoDemo() {
           </div>
 
           {/* Right Section */}
-          <div className="w-full md:w-1/3 rounded-md ">
+          <div className="w-full md:w-1/3 rounded-md">
             <div>
               {/* Product List */}
               <ul className="space-y-4">
                 {products.map((product, index) => (
                   <li
                     key={index}
-                    className="flex items-center border rounded-lg p-4 bg-[#F8F8FD] w-full"
+                    className="flex flex-col sm:flex-row items-center border rounded-lg p-4 bg-[#F8F8FD] w-full"
                   >
                     {/* Product Image */}
                     <div className="w-20 h-20 flex-shrink-0">
@@ -221,19 +218,13 @@ export default function HektoDemo() {
                       />
                     </div>
                     {/* Product Details */}
-                    <div className="ml-4 flex-grow">
-                      <h2 className="text-sm font-medium text-gray-800">
-                        {product.name}
-                      </h2>
-                      <p className="text-xs text-gray-500">
-                        Color: {product.color}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        Size: {product.size}
-                      </p>
+                    <div className="ml-0 sm:ml-4 flex-grow text-center sm:text-left mt-6">
+                      <h2 className="text-sm font-medium text-gray-800">{product.name}</h2>
+                      <p className="text-xs text-gray-500">Color: {product.color}</p>
+                      <p className="text-xs text-gray-500">Size: {product.size}</p>
                     </div>
                     {/* Product Price */}
-                    <p className="text-sm font-medium text-gray-800">
+                    <p className="text-sm font-medium text-gray-800 mt-2 sm:mt-0 sm:ml-auto">
                       {product.price}
                     </p>
                   </li>
