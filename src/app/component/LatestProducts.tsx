@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { ImageError } from "next/dist/server/image-optimizer";
 
 const LatestProducts = () => {
   const products = [
@@ -71,7 +73,7 @@ const LatestProducts = () => {
             } animate__animated animate__fadeIn animate__delay-${index * 200}ms`} // Adding delay animation for each product
           >
             {/* Product Image */}
-            <img
+            <Image
               src={product.image}
               alt={product.name}
               width={360}

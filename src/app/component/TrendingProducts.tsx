@@ -69,7 +69,7 @@ const TrendingProducts = () => {
               className="w-full h-auto bg-[#FFFFFF] border rounded-lg shadow-lg p-6 flex flex-col items-center transition-transform transform hover:scale-105"
             >
               <div className="w-full aspect-w-4 aspect-h-3 bg-[#F5F6F8] flex items-center justify-center rounded-lg mb-4">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
                   className="object-contain w-full h-[200px] md:h-[244px] max-w-full"

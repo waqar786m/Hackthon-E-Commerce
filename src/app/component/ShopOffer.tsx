@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const ShopexOffer = () => {
   const offers = [
@@ -42,7 +43,7 @@ const ShopexOffer = () => {
             className="w-full sm:w-[270px] md:w-[270px] h-[320px] bg-white shadow-lg rounded-lg p-6 text-center transform transition-transform hover:scale-105 hover:shadow-xl duration-300"
           >
             <div className="flex justify-center mb-4">
-              <img
+              <Image
                 src={offer.icon}
                 alt={offer.title}
                 className="w-20 h-20 object-contain"

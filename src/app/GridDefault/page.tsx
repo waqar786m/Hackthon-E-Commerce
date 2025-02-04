@@ -1,5 +1,6 @@
 import Fashion from "./Fashion";
 import Navbar from "./Navbar";
+import Image from "next/image";
 
 export default function Products() {
   const products = [
@@ -43,7 +44,7 @@ export default function Products() {
             <div key={product.id} className="overflow-hidden">
               {/* Product Image */}
               <div className="w-full h-[210px] relative flex justify-center items-center bg-[#F6F7FB] rounded-t-lg overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
                   className="object-contain w-full h-full max-w-[201px] max-h-[201px]"

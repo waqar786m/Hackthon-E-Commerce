@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 function Contact() {
   return (
@@ -118,7 +119,7 @@ function Contact() {
 
             {/* Right Side: Illustration */}
             <div>
-              <img
+              <Image
                 src="/contact/image.png"
                 alt="Contact Illustration"
                 className="w-full"

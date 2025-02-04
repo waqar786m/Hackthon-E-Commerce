@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FaRegHeart, FaHeart } from "react-icons/fa"; // Import wishlist icons
 
 const FeaturedProducts = () => {
@@ -55,7 +56,7 @@ const FeaturedProducts = () => {
               >
                 {wishlist.includes(product.id) ? <FaHeart /> : <FaRegHeart />}
               </div>
-              <img src={product.image} alt={product.name} width={140} height={140} className="object-contain" />
+              <Image src={product.image} alt={product.name} width={140} height={140} className="object-contain" />
             </div>
 
             {/* Product Details */}
