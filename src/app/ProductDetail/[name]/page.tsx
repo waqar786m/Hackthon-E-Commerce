@@ -1,45 +1,49 @@
+// pages/ProductDetail/[name].tsx
 import React from "react";
 import { client } from "@/sanity/lib/client";
 import ProductDetails from "@/app/component/ProductDetails";
-import { notFound } from "next/navigation";
 
-//  Fetch all products (used for static params)
 async function fetchProducts(): Promise<Product[]> {
   try {
-    const query = `*[_type == "product"]{
-      name,
-      price,
-      description,
-      category,
-      discountPercentage,
-      "image": image.asset._ref,
-      stockLevel
-    }`;
-    return await client.fetch(query);
+    const query = `
+      *[_type == "product"]{
+        name,
+        price,
+        description,
+        category,
+        discountPercentage,
+        "image": image.asset._ref,
+        stockLevel
+      }`;
+    const products = await client.fetch(query);
+    return products || [];
   } catch (error) {
     console.error("Error fetching products:", error);
     return [];
   }
 }
 
-//  Generate Static Params (For SSG)
-export async function generateStaticParams() {
-  const products = await fetchProducts();
-  return products.map((product) => ({
-    name: encodeURIComponent(product.name),
-  }));
-}
+const ProductDetail = async ({ params }: { params: { name: string } }) => {
+  const { name } = params;
 
-//  Dynamic Product Page Component
-export default async function ProductDetail({ params }: { params: { name: string } }) {
-  const decodedName = decodeURIComponent(params.name);
+  // Decode the product name to ensure it's properly matched
+  const decodedName = decodeURIComponent(name);
+
+  // Fetch all products
   const products = await fetchProducts();
 
+  // Find the product by name (case-insensitive)
   const product = products.find((p) => p.name.toLowerCase() === decodedName.toLowerCase());
 
   if (!product) {
-    notFound(); // Next.js built-in 404 page
+    return <div className="text-center">Product not found</div>;
   }
 
-  return <ProductDetails product={product} />;
-}
+  return (
+   <>
+      <ProductDetails product={product} />
+    </>
+  );
+};
+
+export default ProductDetail;
