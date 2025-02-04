@@ -42,12 +42,11 @@ function LogIn() {
               Log In
             </button>
           </div>
-          <div className='text-center'>
-            <p className='text-gray-600'>
-              Don't have an account?{" "}
-              <Link className="text-indigo-500 hover:underline" href="/SignUp">Sign Up</Link>
-            </p>
-          </div>
+          <p className='text-gray-600'>
+  {"Don't have an account?"}{" "}
+  <Link className="text-indigo-500 hover:underline" href="/SignUp">Sign Up</Link>
+</p>
+
         </form>
       </div>
     </div>
