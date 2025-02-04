@@ -44,7 +44,7 @@ function LogIn() {
           </div>
           <div className='text-center'>
             <p className='text-gray-600'>
-              Don't have an account?{' '}
+              Don't have an account?{" "}
               <Link className="text-indigo-500 hover:underline" href="/SignUp">Sign Up</Link>
             </p>
           </div>
