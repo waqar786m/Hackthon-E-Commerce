@@ -72,6 +72,8 @@ const TrendingProducts = () => {
                 <Image
                   src={product.image}
                   alt={product.name}
+                  width={270}
+                  height={350}
                   className="object-contain w-full h-[200px] md:h-[244px] max-w-full"
                 />
               </div>

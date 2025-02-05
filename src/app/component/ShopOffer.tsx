@@ -46,6 +46,8 @@ const ShopexOffer = () => {
               <Image
                 src={offer.icon}
                 alt={offer.title}
+                width={50} 
+                height={50} 
                 className="w-20 h-20 object-contain"
               />
             </div>

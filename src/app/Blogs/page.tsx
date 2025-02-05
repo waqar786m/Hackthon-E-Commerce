@@ -91,25 +91,25 @@ export default function Blog() {
     {
       id: 1,
       title: "Duis lectus est.",
-      image: "/blogs/offerproducts/image1.png",
+      image: "/blogs/offersale/image1.png",
       price: "$12.00-$15.00",
     },
     {
       id: 2,
       title: "Sed placerat.",
-      image: "/blogs/offerproducts/image2.png",
+      image: "/blogs/offersale/image2.png",
       price: "$12.00-$15.00",
     },
     {
       id: 3,
       title: "Netus proin.",
-      image: "/blogs/offerproducts/image3.png",
+      image: "/blogs/offersale/image3.png",
       price: "$12.00-$15.00",
     },
     {
       id: 4,
       title: "Platea in.",
-      image: "/blogs/offerproducts/image4.png",
+      image: "/blogs/offersale/image4.png",
       price: "$12.00-$15.00",
     },
   ];
