@@ -18,19 +18,6 @@ const ProductDetails = ({ product }: { product: Product }) => {
     <>
       <Navbar />
 
-      {/* Hero Section */}
-      {/* <div className="mx-auto h-[285px] bg-gray-100 py-10 px-28">
-        <div className="container mx-auto flex flex-col justify-center items-start h-full">
-          <h2 className="text-3xl text-[#101750] font-bold mb-2">
-            Product Details
-          </h2>
-          <div className="flex flex-row items-center">
-            <p className="text-black">Home.Page</p>
-            <p className="text-pink-500">.Product Details</p>
-          </div>
-        </div>
-      </div> */}
-
       {/* Product Section */}
       <div className="w-[1150px] flex flex-wrap p-6 rounded-lg mt-20 ml-28">
         {/* Left Side: Images */}
