@@ -23,11 +23,11 @@ async function fetchProducts(): Promise<Product[]> {
   }
 }
 
-const ProductDetail = async ({ params }: { params: { name: string } }) => {
-  const { name } = params;
+const ProductDetail = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
 
   // Decode the product name to ensure it's properly matched
-  const decodedName = decodeURIComponent(name);
+  const decodedName = decodeURIComponent(id);
 
   // Fetch all products
   const products = await fetchProducts();
