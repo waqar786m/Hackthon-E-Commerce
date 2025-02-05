@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from "react-icons/md";
 import { RiArrowDropDownLine, RiShoppingCart2Line } from "react-icons/ri";
 import { FaRegHeart, FaSearch } from "react-icons/fa";
@@ -17,6 +18,33 @@ export default function Navbar() {
   const { cart } = useCart(); // Access cart data
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // Total items in cart
 
+  // Fetch product data
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const query = `*[ _type == "product"]{
+        name,
+        "imageUrl": image.asset->url,
+        price,
+        description,
+        category,
+        "id": _id
+      }`;
+      const result = await client.fetch(query);
+      setProducts(result);
+    };
+    fetchProducts();
+  }, []);
+
+  // Handle search logic
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(term)
+    );
+    setSearchResults(filtered);
+  };
 
   return (
     <header className="text-black">
@@ -110,6 +138,7 @@ export default function Navbar() {
               type="text"
               placeholder="Search..."
               value={searchTerm}
+              onChange={handleSearch}
               className="flex-1 px-4 py-2 outline-none text-gray-700"
             />
             <div className="w-[51px] h-full flex justify-center items-center bg-[#FB2E86] text-white">
@@ -118,6 +147,28 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Search Results */}
+      {searchTerm && (
+        <div className="container mx-auto mt-4">
+          <h3 className="text-lg font-bold">Search Results:</h3>
+          <ul className="space-y-2">
+            {searchResults.map((product) => (
+              <li key={product.name} className="border p-2 rounded-md">
+                <Link href={`/ProductDetail/${product.name}`} className="text-blue-600">
+                  {product.name} - ${product.price}
+                  <Image
+                   src={product.imageUrl}
+                   alt={product.name}
+                   width={50}
+                   height={50} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {searchResults.length === 0 && <p>No products found.</p>}
+        </div>
+      )}
     </header>
   );
 }
