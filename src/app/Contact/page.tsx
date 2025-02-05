@@ -122,6 +122,8 @@ function Contact() {
               <Image
                 src="/contact/image.png"
                 alt="Contact Illustration"
+                width={723}
+                height={692}
                 className="w-full"
               />
             </div>
